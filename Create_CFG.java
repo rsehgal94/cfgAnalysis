@@ -6,6 +6,7 @@ import soot.Body;
 import soot.SootMethod;
 import soot.toolkits.graph.*;
 import java.util.Iterator;
+import java.util.List;
 
 public class Do_CFG {
 	
@@ -23,11 +24,16 @@ public class Do_CFG {
 		Iterator<Block> i = bg.iterator();
 		
 		while(i.hasNext()){
+			
 			Block blk = (Block)i.next();
-			int n = blk.getIndexInMethod();
-			System.out.println(n);
-			//System.out.println(i.next());
+			List<Block> succ = blk.getSuccs();
+			
+			/*if(!succ.isEmpty())
+				System.out.print();
+			*/
+			for(Block x:succ)
+				System.out.println(blk.getIndexInMethod()+"-->" +x.getIndexInMethod());
+			//System.out.println();
 		}
-		//System.out.println(bg.getBlocks());
 	}
 }
